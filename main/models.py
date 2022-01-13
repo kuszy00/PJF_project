@@ -23,7 +23,7 @@ class Client(models.Model):
     address = models.CharField('Adres zamieszkania', max_length=100)
 
     def __str__(self):
-        return str(self.name) + ' ' + str(self.surname) + ' ' + str(self.mobile)
+        return str(self.name) + ' ' + str(self.surname) + ' nr: ' + str(self.mobile)
 
 
 class Rent(models.Model):
