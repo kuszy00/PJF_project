@@ -1,0 +1,26 @@
+{% extends 'main/base.html' %}
+{% block title %}Wypożyczenia{% endblock %}
+
+{% block content %}
+    <h1 style="text-align:center">LISTA WYPOŻYCZEŃ</h1>
+    <table align="center">
+        <tr>
+            <th>Klient</th>
+            <th>Samochód</th>
+            <th>Data</th>
+            <th>Liczba dni</th>
+            <th>Miejsce wypożyczenia</th>
+            <th><a href="add"><button class="button button1">Dodaj</button></a></th>
+        </tr>
+        {% for item in rents %}
+        <tr>
+            <td>{{item.client}}</td>
+            <td>{{item.car}}</td>
+            <td>{{item.date}}</td>
+            <td>{{item.days}}</td>
+            <td>{{item.address}}</td>
+            <td><a href="edit"><button class="button button1"> Edytuj </button></a>   <a href="delete"><button class="button button1"> Usuń </button></a></td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

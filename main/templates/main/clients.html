@@ -1,0 +1,24 @@
+{% extends 'main/base.html' %}
+{% block title %}Klienci{% endblock %}
+
+{% block content %}
+    <h1 style="text-align:center">LISTA KLIENTÓW</h1>
+    <table align="center">
+        <tr>
+            <th>Imie</th>
+            <th>Nazwisko</th>
+            <th>Numer telefonu</th>
+            <th>Adres zamieszkania</th>
+            <th><a href="add"><button class="button button1">Dodaj</button></a></th>
+        </tr>
+        {% for item in clients %}
+        <tr>
+            <td>{{item.name}}</td>
+            <td>{{item.surname}}</td>
+            <td>{{item.mobile}}</td>
+            <td>{{item.address}}</td>
+            <td><a href="edit"><button class="button button1"> Edytuj </button></a>   <a href="delete"><button class="button button1"> Usuń </button></a></td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

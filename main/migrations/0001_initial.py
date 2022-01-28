@@ -43,8 +43,8 @@ class Migration(migrations.Migration):
                 ('date', models.DateField(verbose_name='Data')),
                 ('days', models.IntegerField(verbose_name='Liczba dni')),
                 ('address', models.CharField(max_length=100, verbose_name='Miejsce wypożyczenia')),
-                ('car', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='main.car')),
-                ('client', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='main.client')),
+                ('car', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='css.car')),
+                ('client', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='css.client')),
             ],
         ),
     ]

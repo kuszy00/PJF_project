@@ -23,12 +23,12 @@ class Client(models.Model):
     address = models.CharField('Adres zamieszkania', max_length=100)
 
     def __str__(self):
-        return str(self.name) + ' ' + str(self.surname) + ' nr: ' + str(self.mobile)
+        return str(self.name) + ' ' + str(self.surname) + ' nr kontaktowy: ' + str(self.mobile)
 
 
 class Rent(models.Model):
-    client = models.ForeignKey(Client)
-    car = models.ForeignKey(Car)
+    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    car = models.ForeignKey(Car, on_delete=models.CASCADE)
     date = models.DateField('Data')
     days = models.IntegerField('Liczba dni')
     address = models.CharField('Miejsce wypożyczenia', max_length=100)

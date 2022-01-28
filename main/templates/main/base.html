@@ -1,0 +1,123 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Base{% endblock %}</title>
+    <style type="text/css">
+    body {
+        background-color: #5F6A72;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    li, a, button {
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 600;
+        font-size: 18px;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    header {
+        box-sizing: border-box;
+        margin: 0;
+        background-color: #333333;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 20px 5%;
+    }
+
+    .logo {
+        cursor: pointer;
+        margin-right: auto;
+    }
+
+    .navbar_links {
+        list-style: none;
+    }
+
+    .navbar_links li {
+        display: inline-block;
+        padding: 0px 40px;
+    }
+
+    .navbar_links li a {
+        transition: all 0.3s ease 0s;
+    }
+
+    .navbar_links li a:hover {
+        color: #A6CBBE;
+    }
+
+    button {
+        margin-left: 40px;
+        padding: 9px 25px;
+        background-color: rgba(166, 203, 190, 1);
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease 0s;
+    }
+
+    .button1 {
+        margin-left: 20px;
+        padding: 6px 20px;
+        background-color: rgba(166, 203, 190, 1);
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease 0s;
+    }
+
+    button:hover {
+        background-color: rgba(166, 203, 190, 0.8);
+    }
+
+    footer {
+        margin-bottom: 10px;
+        padding: 15px;
+        text-align: center;
+        color: #ffffff;
+        font-size: 16px;
+        background-color: #333333;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 80%;
+    }
+
+    td, th {
+        border: 3px solid #333333;
+        text-align: center;
+        padding: 5px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #7E8D98;
+    }
+    </style>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <header>
+        <img class="logo" src="" alt="logo">
+        <navbar>
+            <ul class="navbar_links">
+                <li><a href="http://127.0.0.1:8000">Strona główna</a></li>
+                <li><a href="http://127.0.0.1:8000/cars/">Samochody</a></li>
+                <li><a href="http://127.0.0.1:8000/clients/">Klienci</a></li>
+                <li><a href="http://127.0.0.1:8000/rents/">Wypożyczenia</a></li>
+            </ul>
+        </navbar>
+        <a class="cta" href="logout"><button>Wyloguj</button></a>
+    </header>
+    {% block content %}
+    {% endblock %}
+    <br>
+    <footer>
+        Copyright &copy; Jakub Kowalski WCY19IJ3S1
+    </footer>
+</body>
+</html>

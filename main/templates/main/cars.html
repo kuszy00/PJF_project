@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %}
+{% block title %}Samochody{% endblock %}
+
+{% block content %}
+    <h1 style="text-align:center">LISTA SAMOCHODÓW</h1>
+    <table align="center">
+        <tr>
+            <th>Numer rejestracyjny</th>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Rodzaj paliwa</th>
+            <th>Przebieg</th>
+            <th>Numer VIN</th>
+            <th>Cena za 1 dzień</th>
+            <th>Dostępny</th>
+            <th><a href="add"><button class="button button1">Dodaj</button></a></th>
+        </tr>
+        {% for item in cars %}
+        <tr>
+            <td>{{item.plates}}</td>
+            <td>{{item.manufacturer}}</td>
+            <td>{{item.model}}</td>
+            <td>{{item.fuel}}</td>
+            <td>{{item.mileage}}</td>
+            <td>{{item.vin}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.is_available}}</td>
+            <td><a href="edit"><button class="button button1"> Edytuj </button></a>   <a href="delete"><button class="button button1"> Usuń </button></a></td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
