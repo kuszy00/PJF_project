@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Car, Client, Rent
+from .forms import AddNewCar, AddNewClient, AddNewRent
 
 # Create your views here.
 
@@ -22,3 +23,18 @@ def clients(response):
 def rents(response):
     rents = Rent.objects.all()
     return render(response, "main/rents.html", {"rents": rents})
+
+
+def addCar(response):
+    form = AddNewCar()
+    return render(response, "main/add_car.html", {"form": form})
+
+
+def addClient(response):
+    form = AddNewClient()
+    return render(response, "main/add_car.html", {"form": form})
+
+
+def addRent(response):
+    form = AddNewRent()
+    return render(response, "main/add_car.html", {"form": form})
