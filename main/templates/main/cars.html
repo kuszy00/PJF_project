@@ -3,6 +3,7 @@
 
 {% block content %}
     <h1 style="text-align:center">LISTA SAMOCHODÓW</h1>
+    <br>
     <table align="center">
         <tr>
             <th>Numer rejestracyjny</th>
@@ -25,7 +26,7 @@
             <td>{{item.vin}}</td>
             <td>{{item.price}}</td>
             <td>{{item.is_available}}</td>
-            <td><a href="edit"><button class="button button1"> Edytuj </button></a>   <a href="delete"><button class="button button1"> Usuń </button></a></td>
+            <td><a href="{% url 'update_car' item.id %}"><button class="button button1"> Edytuj </button></a>   <a href="{% url 'delete_car' item.id %}"><button class="button button1"> Usuń </button></a></td>
         </tr>
         {% endfor %}
     </table>

@@ -10,6 +10,7 @@
             <th>Data</th>
             <th>Liczba dni</th>
             <th>Miejsce wypożyczenia</th>
+            <th>Wartość</th>
             <th><a href="add"><button class="button button1">Dodaj</button></a></th>
         </tr>
         {% for item in rents %}
@@ -19,6 +20,7 @@
             <td>{{item.date}}</td>
             <td>{{item.days}}</td>
             <td>{{item.address}}</td>
+            <td>{{item.value}}</td>
             <td><a href="edit"><button class="button button1"> Edytuj </button></a>   <a href="delete"><button class="button button1"> Usuń </button></a></td>
         </tr>
         {% endfor %}

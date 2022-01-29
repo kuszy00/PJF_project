@@ -1,4 +1,4 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, widgets
 from django import forms
 from .models import Car, Client, Rent
 
@@ -15,16 +15,14 @@ class AddNewClient(ModelForm):
         fields = '__all__'
 
 
-class DateInput(forms.DateInput):
-    input_type = 'date'
-
-
-class AddNewRent(forms.Form):
-    client = forms.ModelChoiceField(label="Klient", queryset=Client.objects.all(), empty_label="")
-    car = forms.ModelChoiceField(label="Samochód", queryset=Car.objects.all(), empty_label="")
-    date = forms.DateField(label="Data", widget=forms.widgets.DateInput(attrs={'type': 'date'}))
-    days = forms.IntegerField(label="Liczba dni")
-    address = forms.CharField(label="Miejsce wypożyczenia", max_length=100)
-    widgets = {
-        'date': DateInput(),
-    }
+class AddNewRent(ModelForm):
+    class Meta:
+        model = Rent
+        fields = ['client', 'car', 'date', 'days', 'address']
+        labels = {
+            'client': "Klient",
+            'car': "Samochód"
+        }
+        widgets = {
+            'date': widgets.DateInput(attrs={'type': 'date'})
+        }

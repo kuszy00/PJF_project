@@ -1,9 +1,9 @@
 {% extends 'main/base.html' %}
 
-{% block title %}Dodaj nowy samochód{% endblock %}
+{% block title %}Dodaj nowego klienta{% endblock %}
 
 {% block content %}
-    <h1 style="text-align:center">LISTA SAMOCHODÓW</h1>
+    <h1 style="text-align:center">LISTA KLIENTÓW</h1>
     <form method="post" action="" align="center">
         {% csrf_token %}
         <table id="formTable" align="center">{{form.as_table}}</table>

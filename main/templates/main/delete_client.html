@@ -1,0 +1,13 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Usuń klienta{% endblock %}
+
+{% block content %}
+    <h1 style="text-align:center">LISTA KLIENTÓW</h1>
+    <p style="text-align:center; font-size:30">Czy napewno chcesz usunąć "{{item}}"?</p>
+    <form method="post" action="" align="center">
+        {% csrf_token %}
+        <a href="/clients/">Anuluj</a>
+        <button type="submit", name="delete">Usuń</button>
+    </form>
+{% endblock %}

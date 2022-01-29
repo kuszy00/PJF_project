@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Car, Client, Rent
 from .forms import AddNewCar, AddNewClient, AddNewRent
@@ -22,19 +22,92 @@ def clients(response):
 
 def rents(response):
     rents = Rent.objects.all()
-    return render(response, "main/rents.html", {"rents": rents})
+    cars = Car.objects.all()
+    return render(response, "main/rents.html", {"rents": rents, "cars": cars})
 
 
 def addCar(response):
     form = AddNewCar()
+    if response.method == 'POST':
+        form = AddNewCar(response.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/cars')
     return render(response, "main/add_car.html", {"form": form})
 
 
 def addClient(response):
     form = AddNewClient()
-    return render(response, "main/add_car.html", {"form": form})
+    if response.method == 'POST':
+        form = AddNewClient(response.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/clients')
+    return render(response, "main/add_client.html", {"form": form})
 
 
 def addRent(response):
     form = AddNewRent()
+    if response.method == 'POST':
+        form = AddNewRent(response.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/rents')
+    return render(response, "main/add_rent.html", {"form": form})
+
+
+def updateCar(response, pk):
+    update = Car.objects.get(id=pk)
+    form = AddNewCar(instance=update)
+    if response.method == 'POST':
+        form = AddNewCar(response.POST, instance=update)
+        if form.is_valid():
+            form.save()
+            return redirect('/cars')
     return render(response, "main/add_car.html", {"form": form})
+
+
+def updateClient(response, pk):
+    update = Client.objects.get(id=pk)
+    form = AddNewClient(instance=update)
+    if response.method == 'POST':
+        form = AddNewClient(response.POST, instance=update)
+        if form.is_valid():
+            form.save()
+            return redirect('/clients')
+    return render(response, "main/add_client.html", {"form": form})
+
+
+def updateRent(response, pk):
+    update = Rent.objects.get(id=pk)
+    form = AddNewRent(instance=update)
+    if response.method == 'POST':
+        form = AddNewRent(response.POST, instance=update)
+        if form.is_valid():
+            form.save()
+            return redirect('/rents')
+    return render(response, "main/add_rent.html", {"form": form})
+
+
+def deleteCar(response, pk):
+    delete = Car.objects.get(id=pk)
+    if response.method == 'POST':
+        delete.delete()
+        return redirect('/cars')
+    return render(response, "main/delete_car.html", {"item": delete})
+
+
+def deleteClient(response, pk):
+    delete = Client.objects.get(id=pk)
+    if response.method == 'POST':
+        delete.delete()
+        return redirect('/clients')
+    return render(response, "main/delete_client.html", {"item": delete})
+
+
+def deleteRent(response, pk):
+    delete = Rent.objects.get(id=pk)
+    if response.method == 'POST':
+        delete.delete()
+        return redirect('/rents')
+    return render(response, "main/delete_rent.html", {"item": delete})

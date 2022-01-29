@@ -72,18 +72,9 @@
         background-color: rgba(166, 203, 190, 0.8);
     }
 
-    footer {
-        margin-bottom: 10px;
-        padding: 15px;
-        text-align: center;
-        color: #ffffff;
-        font-size: 16px;
-        background-color: #333333;
-    }
-
     table {
         border-collapse: collapse;
-        width: 80%;
+        width: 70%;
     }
 
     td, th {
@@ -95,8 +86,12 @@
     tr:nth-child(even) {
         background-color: #7E8D98;
     }
-    </style>
 
+    #formTable {
+        border-collapse: collapse;
+        width: 25%;
+    }
+    </style>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -113,11 +108,10 @@
         </navbar>
         <a class="cta" href="logout"><button>Wyloguj</button></a>
     </header>
+    <br>
     {% block content %}
     {% endblock %}
     <br>
-    <footer>
-        Copyright &copy; Jakub Kowalski WCY19IJ3S1
-    </footer>
+
 </body>
 </html>
