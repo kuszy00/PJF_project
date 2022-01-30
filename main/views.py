@@ -1,9 +1,9 @@
-from django.http import request
+#Jakub Kowalski WCY19IJ3S1
 from django.shortcuts import render, redirect
 from django.db.models import ProtectedError
 from .models import Car, Client, Rent
 from .forms import AddNewCar, AddNewClient, AddNewRent
-
+from .filters import CarFilter, ClientFilter, RentFilter
 # Create your views here.
 
 
@@ -13,18 +13,24 @@ def index(response):
 
 def cars(response):
     cars = Car.objects.all()
-    return render(response, "main/cars.html", {"cars": cars})
+    myFilter = CarFilter(response.GET, queryset=cars)
+    cars = myFilter.qs
+    return render(response, "main/cars.html", {"cars": cars, "myFilter": myFilter})
 
 
 def clients(response):
     clients = Client.objects.all()
-    return render(response, "main/clients.html", {"clients": clients})
+    myFilter = ClientFilter(response.GET, queryset=clients)
+    clients = myFilter.qs
+    return render(response, "main/clients.html", {"clients": clients, "myFilter": myFilter})
 
 
 def rents(response):
     rents = Rent.objects.all()
     cars = Car.objects.all()
-    return render(response, "main/rents.html", {"rents": rents, "cars": cars})
+    myFilter = RentFilter(response.GET, queryset=rents)
+    rents = myFilter.qs
+    return render(response, "main/rents.html", {"rents": rents, "cars": cars, "myFilter": myFilter})
 
 
 def addCar(response):

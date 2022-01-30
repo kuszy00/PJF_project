@@ -3,6 +3,11 @@
 
 {% block content %}
     <h1 style="text-align:center">LISTA WYPOŻYCZEŃ</h1>
+    <form method="get" align="center">
+        {{myFilter.form}}
+        <br><br>
+        <button type="submit">Wyszukaj</button>
+    </form>
     <table align="center">
         <tr>
             <th>Klient</th>

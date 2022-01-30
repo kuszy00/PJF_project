@@ -1,3 +1,4 @@
+#Jakub Kowalski WCY19IJ3S1
 from django.forms import ModelForm, widgets
 from django import forms
 from .models import Car, Client, Rent
@@ -28,4 +29,3 @@ class AddNewRent(ModelForm):
         widgets = {
             'date': widgets.DateInput(attrs={'type': 'date'})
         }
-

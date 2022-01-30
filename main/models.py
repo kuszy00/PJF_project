@@ -1,7 +1,10 @@
+#Jakub Kowalski WCY19IJ3S1
 from django.db import models
-
+from datetime import date, timedelta
 
 # Create your models here.
+
+
 class Car(models.Model):
     plates = models.CharField('Numer rejestracyjny', max_length=8)
     manufacturer = models.CharField('Marka', max_length=30)
@@ -36,11 +39,18 @@ class Rent(models.Model):
     def __str__(self):
         return str(self.date) + ' ' + str(self.car) + ' ' + str(self.client)
 
+    # calculating rent value
     @property
     def value(self):
         return self.days*self.car.price
 
+    # after creating new rent make rented car unavailable
     def save(self, *args, **kwargs):
         super(Rent, self).save(*args, **kwargs)
         self.car.is_available = False
         self.car.save()
+
+    # check if rent is done
+    def is_rented(self):
+            self.car.is_available = True
+            self.car.save()

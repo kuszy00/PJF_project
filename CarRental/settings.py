@@ -1,3 +1,4 @@
+#Jakub Kowalski WCY19IJ3S1
 """
 Django settings for CarRental project.
 
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
