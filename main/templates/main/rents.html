@@ -21,7 +21,8 @@
             <td>{{item.days}}</td>
             <td>{{item.address}}</td>
             <td>{{item.value}}</td>
-            <td><a href="edit"><button class="button button1"> Edytuj </button></a>   <a href="delete"><button class="button button1"> Usuń </button></a></td>
+            <td><a href="{% url 'update_rent' item.id %}"><button class="button button1"> Edytuj </button></a>   <a href="{% url 'delete_rent' item.id %}"><button class="button button1"> Usuń </button></a></td>
+
         </tr>
         {% endfor %}
     </table>

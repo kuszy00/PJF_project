@@ -1,0 +1,13 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Usuń wypożyczenie{% endblock %}
+
+{% block content %}
+    <h1 style="text-align:center">LISTA WYPOŻYCZEŃ</h1>
+    <p style="text-align:center; font-size:30">Czy napewno chcesz usunąć <b>"{{item}}"</b>?</p>
+    <form method="post" action="" align="center">
+        {% csrf_token %}
+        <a href="/rents/">Anuluj</a>
+        <button type="submit", name="delete">Usuń</button>
+    </form>
+{% endblock %}

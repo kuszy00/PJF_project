@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.db.models import ProtectedError
 from .models import Car, Client, Rent
 from .forms import AddNewCar, AddNewClient, AddNewRent
 
@@ -92,22 +92,34 @@ def updateRent(response, pk):
 def deleteCar(response, pk):
     delete = Car.objects.get(id=pk)
     if response.method == 'POST':
-        delete.delete()
-        return redirect('/cars')
+        try:
+            delete.delete()
+            return redirect('/cars')
+        except ProtectedError:
+            error = "delete"
+            return render(response, "main/error.html", {"error": error})
     return render(response, "main/delete_car.html", {"item": delete})
 
 
 def deleteClient(response, pk):
     delete = Client.objects.get(id=pk)
     if response.method == 'POST':
-        delete.delete()
-        return redirect('/clients')
+        try:
+            delete.delete()
+            return redirect('/clients')
+        except ProtectedError:
+            error = "delete"
+            return render(response, "main/error.html", {"error": error})
     return render(response, "main/delete_client.html", {"item": delete})
 
 
 def deleteRent(response, pk):
     delete = Rent.objects.get(id=pk)
     if response.method == 'POST':
-        delete.delete()
-        return redirect('/rents')
+        try:
+            delete.delete()
+            return redirect('/rents')
+        except ProtectedError:
+            error = "delete"
+            return render(response, "main/error.html", {"error": error})
     return render(response, "main/delete_rent.html", {"item": delete})

@@ -27,8 +27,8 @@ class Client(models.Model):
 
 
 class Rent(models.Model):
-    client = models.ForeignKey(Client, on_delete=models.SET_NULL, null=True)
-    car = models.ForeignKey(Car, on_delete=models.SET_NULL, null=True)
+    client = models.ForeignKey(Client, on_delete=models.PROTECT)
+    car = models.ForeignKey(Car, on_delete=models.PROTECT)
     date = models.DateField('Data')
     days = models.IntegerField('Liczba dni')
     address = models.CharField('Miejsce wypożyczenia', max_length=100)
