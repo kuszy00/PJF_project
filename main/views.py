@@ -1,3 +1,4 @@
+from django.http import request
 from django.shortcuts import render, redirect
 from django.db.models import ProtectedError
 from .models import Car, Client, Rent
@@ -7,7 +8,7 @@ from .forms import AddNewCar, AddNewClient, AddNewRent
 
 
 def index(response):
-    return render(response, "main/base.html", {})
+    return render(response, "main/index.html", {})
 
 
 def cars(response):

@@ -1,13 +1,12 @@
 {% extends 'main/base.html' %}
 
-{% block title %}Dodaj nowego klienta{% endblock %}
+{% block title %}Błąd{% endblock %}
 
 {% block content %}
-    <h1 align="center">ERROR</h1>
+    <h1 align="center">Wystąpił błąd</h1>
     {% if error == "delete" %}
     <h1 style="text-align:center">Nie można usunąć danego rekordu!<br>
     <br><a href="javascript:history.back()">Wróć</a></h1>
     {% endif %}
     <br>
-
 {% endblock %}

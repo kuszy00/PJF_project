@@ -16,6 +16,8 @@ class AddNewClient(ModelForm):
 
 
 class AddNewRent(ModelForm):
+    car = forms.ModelChoiceField(queryset=Car.objects.filter(is_available=True))
+
     class Meta:
         model = Rent
         fields = ['client', 'car', 'date', 'days', 'address']
@@ -26,3 +28,4 @@ class AddNewRent(ModelForm):
         widgets = {
             'date': widgets.DateInput(attrs={'type': 'date'})
         }
+

@@ -39,3 +39,8 @@ class Rent(models.Model):
     @property
     def value(self):
         return self.days*self.car.price
+
+    def save(self, *args, **kwargs):
+        super(Rent, self).save(*args, **kwargs)
+        self.car.is_available = False
+        self.car.save()
