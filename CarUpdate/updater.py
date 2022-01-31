@@ -6,5 +6,5 @@ from .carUpdate import changeAvailability
 # define schedule
 def start():
     scheduler = BackgroundScheduler()
-    scheduler.add_job(changeAvailability, 'interval', minutes=60)
+    scheduler.add_job(changeAvailability, 'interval', hours=12)
     scheduler.start()

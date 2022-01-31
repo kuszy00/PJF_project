@@ -24,7 +24,7 @@ class ClientFilter(django_filters.FilterSet):
 
 
 class RentFilter(django_filters.FilterSet):
-    address = CharFilter(lookup_expr='icontains', label='Adres zamieszkania')
+    address = CharFilter(lookup_expr='icontains', label='Miejsce wypożyczenia')
     start_date = django_filters.DateFilter(field_name='date', lookup_expr='gte',
                                                    widget=DateInput(format='%Y-%m-%d"',
                                                                     attrs={'type': 'date'}), label="Data od")
